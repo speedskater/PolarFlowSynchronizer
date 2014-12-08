@@ -26,3 +26,8 @@ Usage
 The usage of PolarFlowSynchronizer is straight forward. You only have to provide a target directory, username and password and run the application each time you add new data to polar flow. Keep in mind to document your training online and assigne the correct sports profile before you synchronize your data as already downloaded training data won't be synchronized again.
 
 	$ polar-flow-synchronizer "/my/target/directory" "my.user@domain.com" "mysecretpassword"
+
+License and copyrights
+======================
+
+This software is released under the terms of the [ISC license](https://github.com/speedskater/PolarFlowSynchronizer/blob/master/LICENSE).
