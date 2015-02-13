@@ -44,6 +44,6 @@
     "request": "~2.48.0",
     "touch": "~0.0.3",
     "tough-cookie": "~0.12.1",
-    "tough-cookie-filestore": "~0.0.1",
+    "tough-cookie-filestore": "~0.0.1"
   }
 }
