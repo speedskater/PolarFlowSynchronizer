@@ -1,43 +1,50 @@
 {
-	"name": "polar-flow-synchronizer",
-	"version": "1.0.0",
-	"description": "A nodejs based command line tool to synchronize tcx files stored in polar flow to a local directory.",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"bin": {
-		"polar-flow-synchronizer": "./bin/polar-flow-synchronizer.js"
-	},
-	"homepage": "https://github.com/speedskater/PolarFlowSynchronizer",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/speedskater/PolarFlowSynchronizer.git"
-	},
-	"bugs": {
-		"url": "https://github.com/speedskater/PolarFlowSynchronizer/issues"
-	},
-	"keywords": [
-		"polar",
-		"flow",
-		"tcx",
-		"files"
-	],
-	"author": {
-		"name": "Robert Binna",
-		"email": "rbinna@gmail.com"
-	},
-	"licenses": [{
-		"type": "MIT",
-		"url": "https://github.com/speedskater/PolarFlowSynchronizer/blob/master/LICENSE"
-	}],
-	"dependencies": {
-		"async": "~0.9.0",
-		"commander": "~2.5.0",
-		"mkdirp": "~0.5.0",
-		"moment": "~2.8.4",
-		"request": "~2.48.0",
-		"touch": "~0.0.3",
-		"tough-cookie": "~0.12.1",
-		"tough-cookie-filestore": "~0.0.1"
-	}
+  "name": "polar-flow-synchronizer",
+  "version": "1.0.0",
+  "description": "A nodejs based command line tool to synchronize tcx files stored in polar flow to a local directory.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "polar-flow-synchronizer": "./bin/polar-flow-synchronizer.js"
+  },
+  "homepage": "https://github.com/speedskater/PolarFlowSynchronizer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/speedskater/PolarFlowSynchronizer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/speedskater/PolarFlowSynchronizer/issues"
+  },
+  "keywords": [
+    "polar",
+    "flow",
+    "tcx",
+    "files"
+  ],
+  "author": {
+    "name": "Robert Binna",
+    "email": "rbinna@gmail.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/speedskater/PolarFlowSynchronizer/blob/master/LICENSE"
+    }
+  ],
+  "dependencies": {
+    "adm-zip": "^0.4.7",
+    "async": "~0.9.0",
+    "commander": "~2.5.0",
+    "content-disposition": "^0.5.0",
+    "fstream": "^1.0.4",
+    "mkdirp": "~0.5.0",
+    "moment": "~2.8.4",
+    "progress": "^1.1.8",
+    "request": "~2.48.0",
+    "touch": "~0.0.3",
+    "tough-cookie": "~0.12.1",
+    "tough-cookie-filestore": "~0.0.1",
+    "unzip": "^0.1.11"
+  }
 }

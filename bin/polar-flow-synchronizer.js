@@ -9,6 +9,7 @@ var FileCookieStore = require('tough-cookie-filestore');
 
 var PolarApi = require('./../lib/PolarApi');
 var PolarSynchronizer = require('./../lib/PolarSynchronizer');
+var ProgressBar = require('progress');
 
 var stringValue = function(value) {
 	return value;
@@ -27,6 +28,7 @@ var exportDirectory = program.args[0];
 var username = program.args[1];
 var password = program.args[2];
 var cookieFile = path.join(exportDirectory, username + '-cookie.json');
+
 async.series([
 	mkdirp.bind(undefined, exportDirectory, 0770),
 	touch.bind(undefined, cookieFile, {}),
@@ -35,12 +37,24 @@ async.series([
 			api.authenticate(password, cb);
 		});
 		var synchronizer = new PolarSynchronizer(exportDirectory, api);
-		synchronizer.synchronize(cb);
+		var bar = null;
+		synchronizer.synchronize(cb, function(totalNumberFiles, filesProcessed, filesFailed) {
+			if(bar === null) {
+				bar = new ProgressBar('  processing ' + totalNumberFiles +  ' Trainings [:bar] :percent :etas', {
+					complete: '=',
+					incomplete: ' ',
+					width: 20,
+					total: totalNumberFiles
+				});
+			}
+			//console.log("TOTAL Number Files " + totalNumberFiles + " files Processed: " + filesProcessed + " files Failed: " + filesFailed);
+			bar.tick(1);
+		});
 	}
 ], function(error, results) {
 	var numberSynchronizedFiles = results[2];
 	if(error) {
-		console.log(error.message || error);
+		console.log("ERROR: " + (error.message || error));
 	} else {
 		if (numberSynchronizedFiles === 0) {
 			console.log("All your training files are up to date.");
