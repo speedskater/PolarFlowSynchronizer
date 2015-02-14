@@ -52,7 +52,10 @@ async.series([
 		});
 	}
 ], function(error, results) {
-	var numberSynchronizedFiles = results[2];
+	var synchronizationResuts = results[2];
+	var numberSynchronizedFiles = synchronizationResuts[0];
+	var couldNotDownload = synchronizationResuts[1];
+	var falseMimeTypes = synchronizationResuts[2];
 	if(error) {
 		console.log("ERROR: " + (error.message || error));
 	} else {
@@ -60,6 +63,20 @@ async.series([
 			console.log("All your training files are up to date.");
 		} else {
 			console.log(numberSynchronizedFiles + " files were downloaded.");
+		}
+		if(couldNotDownload.length > 0) {
+			console.log("Could not download " + ouldNotDownload.length + " files:");
+			couldNotDownload.forEach(function(failedUrl) {
+				console.log(" * " + failedUrl);
+			});
+			console.log("");
+		}
+		if(falseMimeTypes.length > 0) {
+			console.log("The following training files were in the wrong format:");
+			falseMimeTypes.forEach(function(failedUrl) {
+				console.log(" * " + failedUrl);
+			});
+			console.log("");
 		}
 	}
 });
