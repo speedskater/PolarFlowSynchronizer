@@ -18,6 +18,8 @@ var stringValue = function(value) {
 program
 	.version('0.0.1')
 	.usage('[options] <directory> <username> <password> ')
+	.option('-s, --start [date]', 'manually set the start timestamp. Format: DD.MM.YYYY')
+	.option('-e, --end [date]', 'manually set the end timestamp. Format: DD.MM.YYYY')
 	.parse(process.argv);
 
 if(program.args.length !== 3) {
@@ -37,6 +39,12 @@ async.series([
 			api.authenticate(password, cb);
 		});
 		var synchronizer = new PolarSynchronizer(exportDirectory, api);
+		if(program.start){
+			synchronizer.setCustomStartTimeStamp(program.start);
+		}
+		if (program.end){
+			synchronizer.setCustomEndTimeStamp(program.end);
+		}
 		var bar = null;
 		synchronizer.synchronize(cb, function(totalNumberFiles, filesProcessed, filesFailed) {
 			if(bar === null) {
