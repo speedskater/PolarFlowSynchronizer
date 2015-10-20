@@ -1,6 +1,6 @@
 {
   "name": "polar-flow-synchronizer",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A nodejs based command line tool to synchronize tcx files stored in polar flow to a local directory.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
